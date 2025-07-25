@@ -167,56 +167,63 @@ local function makeButton(name, yPos, callback)
 end
 
 
-makeButton("Decal Spam", 50, function()
+makeButton("decal spam", 50, function()
 	decalSpam("891352111")
 end)
 
-makeButton("Skybox", 95, function()
+makeButton("skybox", 95, function()
 	skybox("891352111")
 end)
 
 local RequestCommandSilent = game.ReplicatedStorage:WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
 
-makeButton("Theme", 140, function()
+makeButton("theme", 140, function()
 	RequestCommandSilent:InvokeServer(";music 72466949466030")
 	RequestCommandSilent:InvokeServer(";pitch 0.25")
 	RequestCommandSilent:InvokeServer(";volume inf")
 end)
 
-makeButton("Disco", 185, function()
+makeButton("disco", 185, function()
 	RequestCommandSilent:InvokeServer(";disco")
 end)
 
-makeButton("Fire All", 230, function()
+makeButton("fire all", 230, function()
 	RequestCommandSilent:InvokeServer(";fire all")
 end)
 
-makeButton("Name All", 275, function()
+makeButton("name all", 275, function()
 	RequestCommandSilent:InvokeServer(";name all java was here")
 end)
 
-makeButton("Loopkill All", 320, function()
+makeButton("loopkill all", 320, function()
 	RequestCommandSilent:InvokeServer(";loopkill all")
 end)
 
-makeButton("Chat All", 365, function()
+makeButton("chat all", 365, function()
 	RequestCommandSilent:InvokeServer(";say all JAVA1X3X5X6 RETURNED")
 end)
 
-makeButton("Billboard GUI", 410, function()
+makeButton("billboard gui", 410, function()
 	RequestCommandSilent:InvokeServer(";titler me 1x3x5x6")
 end)
 
-makeButton("Char All", 455, function()
+makeButton("char All", 455, function()
 	RequestCommandSilent:InvokeServer(";char all 151784900")
 end)
 
-makeButton("Kill All", 455, function()
+makeButton("kill all", 455, function()
 	RequestCommandSilent:InvokeServer(";kill all")
 end)
 
-makeButton("Creepy fog", 455, function()
+makeButton("creepy fog", 455, function()
 	RequestCommandSilent:InvokeServer(";fogcolor black")
    RequestCommandSilent:InvokeServer(";fog")   
 end)
 
+makeButton("message", 455, function()
+	RequestCommandSilent:InvokeServer(";sm java hacked this")
+end)
+
+makeButton("server hint", 455, function()
+	RequestCommandSilent:InvokeServer(";sh java hacked this")
+end)
