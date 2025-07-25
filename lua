@@ -6,32 +6,31 @@ screenGui.Name = "java1x3x5x6 reborn gui v2"
 screenGui.ResetOnSpawn = false
 screenGui.Parent = playerGui
 
+local buttonSpacing = 45
+local startY = 50
+local totalButtons = 13
 
 local mainFrame = Instance.new("Frame")
-mainFrame.Size = UDim2.new(0, 420, 0, 500)
-mainFrame.Position = UDim2.new(0.5, -210, 0.5, -250)
+mainFrame.Size = UDim2.new(0, 480, 0, startY + buttonSpacing * totalButtons + 60) -- wider and taller
+mainFrame.Position = UDim2.new(0.5, -mainFrame.Size.X.Offset/2, 0.5, 100) -- shifted down by 100 pixels
 mainFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 mainFrame.BorderSizePixel = 0
 mainFrame.Parent = screenGui
-
 
 local corner = Instance.new("UICorner")
 corner.CornerRadius = UDim.new(0, 12)
 corner.Parent = mainFrame
 
-
 local backgroundImage = Instance.new("ImageLabel")
 backgroundImage.Image = "rbxassetid://891352111"
 backgroundImage.Size = UDim2.new(1, 0, 1, 0)
 backgroundImage.Position = UDim2.new(0, 0, 0, 0)
-backgroundImage.BackgroundTransparency = 0.7
+backgroundImage.BackgroundTransparency = 0.9 -- more transparent for better text visibility
 backgroundImage.BorderSizePixel = 0
 backgroundImage.Parent = mainFrame
 
-
 mainFrame.Active = true
 mainFrame.Draggable = true
-
 
 local title = Instance.new("TextLabel")
 title.Text = "java1x3x5x6 gui v2 by er1r"
@@ -51,7 +50,6 @@ task.spawn(function()
 		task.wait(0.5)
 	end
 end)
-
 
 local char = player.Character or player.CharacterAdded:Wait()
 local tool
@@ -78,7 +76,6 @@ local remote = tool.SyncAPI.ServerEndpoint
 local function _(args)
 	remote:InvokeServer(unpack(args))
 end
-
 
 function SetLocked(part, boolean)
 	_( { "SetLocked", { part }, boolean } )
@@ -116,7 +113,6 @@ function MeshResize(part, size)
 	_( { "SyncMesh", { { Part = part, Scale = size } } } )
 end
 
-
 local function skybox(id)
 	local hrp = char:WaitForChild("HumanoidRootPart")
 	local x, y, z = math.floor(hrp.Position.X), math.floor(hrp.Position.Y), math.floor(hrp.Position.Z)
@@ -133,7 +129,6 @@ local function skybox(id)
 	end
 end
 
-
 local function decalSpam(id)
 	for _, v in pairs(workspace:GetDescendants()) do
 		if v:IsA("BasePart") then
@@ -147,7 +142,6 @@ local function decalSpam(id)
 		end
 	end
 end
-
 
 local function makeButton(name, yPos, callback)
 	local button = Instance.new("TextButton")
@@ -166,64 +160,64 @@ local function makeButton(name, yPos, callback)
 	corner.Parent = button
 end
 
+local RequestCommandSilent = game.ReplicatedStorage:WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
 
-makeButton("decal spam", 50, function()
-	decalSpam("891352111")
-end)
-
-makeButton("skybox", 95, function()
+makeButton("skybox", startY + buttonSpacing * 0, function()
 	skybox("891352111")
 end)
 
-local RequestCommandSilent = game.ReplicatedStorage:WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+makeButton("decal spam", startY + buttonSpacing * 1, function()
+	decalSpam("891352111")
+end)
 
-makeButton("theme", 140, function()
+makeButton("theme", startY + buttonSpacing * 2, function()
 	RequestCommandSilent:InvokeServer(";music 72466949466030")
 	RequestCommandSilent:InvokeServer(";pitch 0.25")
 	RequestCommandSilent:InvokeServer(";volume inf")
 end)
 
-makeButton("disco", 185, function()
+makeButton("disco", startY + buttonSpacing * 3, function()
 	RequestCommandSilent:InvokeServer(";disco")
 end)
 
-makeButton("fire all", 230, function()
+makeButton("fire all", startY + buttonSpacing * 4, function()
 	RequestCommandSilent:InvokeServer(";fire all")
 end)
 
-makeButton("name all", 275, function()
+makeButton("name all", startY + buttonSpacing * 5, function()
 	RequestCommandSilent:InvokeServer(";name all java was here")
 end)
 
-makeButton("loopkill all", 320, function()
+makeButton("loopkill all", startY + buttonSpacing * 6, function()
 	RequestCommandSilent:InvokeServer(";loopkill all")
 end)
 
-makeButton("chat all", 365, function()
+makeButton("chat all", startY + buttonSpacing * 7, function()
 	RequestCommandSilent:InvokeServer(";say all JAVA1X3X5X6 RETURNED")
 end)
 
-makeButton("billboard gui", 410, function()
+makeButton("billboard gui", startY + buttonSpacing * 8, function()
 	RequestCommandSilent:InvokeServer(";titler me 1x3x5x6")
 end)
 
-makeButton("char All", 455, function()
+makeButton("char All", startY + buttonSpacing * 9, function()
 	RequestCommandSilent:InvokeServer(";char all 151784900")
 end)
 
-makeButton("kill all", 455, function()
+makeButton("kill all", startY + buttonSpacing * 10, function()
 	RequestCommandSilent:InvokeServer(";kill all")
 end)
 
-makeButton("creepy fog", 455, function()
+makeButton("creepy fog", startY + buttonSpacing * 11, function()
 	RequestCommandSilent:InvokeServer(";fogcolor black")
-   RequestCommandSilent:InvokeServer(";fog")   
+	RequestCommandSilent:InvokeServer(";fog")
 end)
 
-makeButton("message", 455, function()
+makeButton("message", startY + buttonSpacing * 12, function()
 	RequestCommandSilent:InvokeServer(";sm java hacked this")
 end)
 
-makeButton("server hint", 455, function()
+makeButton("server hint", startY + buttonSpacing * 13, function()
 	RequestCommandSilent:InvokeServer(";sh java hacked this")
 end)
+
