@@ -8,11 +8,11 @@ screenGui.Parent = playerGui
 
 local buttonSpacing = 45
 local startY = 50
-local totalButtons = 13
+local totalButtons = 18
 
 local mainFrame = Instance.new("Frame")
-mainFrame.Size = UDim2.new(0, 480, 0, startY + buttonSpacing * totalButtons + 60) -- wider and taller
-mainFrame.Position = UDim2.new(0.5, -mainFrame.Size.X.Offset/2, 0.5, 100) -- shifted down by 100 pixels
+mainFrame.Size = UDim2.new(0, 480, 0, startY + buttonSpacing * totalButtons + 60)
+mainFrame.Position = UDim2.new(0.5, -240, 0.5, 150) -- further down
 mainFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 mainFrame.BorderSizePixel = 0
 mainFrame.Parent = screenGui
@@ -25,7 +25,7 @@ local backgroundImage = Instance.new("ImageLabel")
 backgroundImage.Image = "rbxassetid://891352111"
 backgroundImage.Size = UDim2.new(1, 0, 1, 0)
 backgroundImage.Position = UDim2.new(0, 0, 0, 0)
-backgroundImage.BackgroundTransparency = 0.9 -- more transparent for better text visibility
+backgroundImage.BackgroundTransparency = 0.9
 backgroundImage.BorderSizePixel = 0
 backgroundImage.Parent = mainFrame
 
@@ -221,3 +221,18 @@ makeButton("server hint", startY + buttonSpacing * 13, function()
 	RequestCommandSilent:InvokeServer(";sh java hacked this")
 end)
 
+makeButton("speed all", startY + buttonSpacing * 14, function()
+	RequestCommandSilent:InvokeServer(";speed all 50")
+end)
+
+makeButton("fat all", startY + buttonSpacing * 15, function()
+	RequestCommandSilent:InvokeServer(";fat all")
+end)
+
+makeButton("gear weapon", startY + buttonSpacing * 16, function()
+	RequestCommandSilent:InvokeServer(";gear me 94794847")
+end)
+
+makeButton("create team", startY + buttonSpacing * 17, function()
+	RequestCommandSilent:InvokeServer(";createteam Red JAVA WUZ HEREE")
+end)
